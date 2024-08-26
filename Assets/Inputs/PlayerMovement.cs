@@ -211,6 +211,34 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Touch"",
+            ""id"": ""00483f2c-0269-4074-bff8-71142a21055f"",
+            ""actions"": [
+                {
+                    ""name"": ""TouchMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ff995d0-6d1f-4ff3-aff8-9b8328f22de9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f3d70712-291d-4b98-9bbe-c423149989bd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -220,6 +248,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
+        // Touch
+        m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
+        m_Touch_TouchMove = m_Touch.FindAction("TouchMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,10 +370,60 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         }
     }
     public OnFootActions @OnFoot => new OnFootActions(this);
+
+    // Touch
+    private readonly InputActionMap m_Touch;
+    private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
+    private readonly InputAction m_Touch_TouchMove;
+    public struct TouchActions
+    {
+        private @PlayerMovement m_Wrapper;
+        public TouchActions(@PlayerMovement wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TouchMove => m_Wrapper.m_Touch_TouchMove;
+        public InputActionMap Get() { return m_Wrapper.m_Touch; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
+        public void AddCallbacks(ITouchActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TouchActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Add(instance);
+            @TouchMove.started += instance.OnTouchMove;
+            @TouchMove.performed += instance.OnTouchMove;
+            @TouchMove.canceled += instance.OnTouchMove;
+        }
+
+        private void UnregisterCallbacks(ITouchActions instance)
+        {
+            @TouchMove.started -= instance.OnTouchMove;
+            @TouchMove.performed -= instance.OnTouchMove;
+            @TouchMove.canceled -= instance.OnTouchMove;
+        }
+
+        public void RemoveCallbacks(ITouchActions instance)
+        {
+            if (m_Wrapper.m_TouchActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITouchActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TouchActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TouchActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TouchActions @Touch => new TouchActions(this);
     public interface IOnFootActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+    }
+    public interface ITouchActions
+    {
+        void OnTouchMove(InputAction.CallbackContext context);
     }
 }

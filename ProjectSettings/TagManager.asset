@@ -4,12 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Cube
   - Ground
+  - Interactables
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

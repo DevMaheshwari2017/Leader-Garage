@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 3917098954794238188}
   m_Layer: 0
   m_Name: door_001
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 8754941800476164176}
   m_Layer: 0
   m_Name: door
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8284,7 +8284,8 @@ GameObject:
   - component: {fileID: 6653733948228685349}
   - component: {fileID: 6338428001804360648}
   - component: {fileID: 266514836202679905}
-  - component: {fileID: 4097026958508745415}
+  - component: {fileID: 7957510714214575986}
+  - component: {fileID: 3411160533707857550}
   m_Layer: 0
   m_Name: ground
   m_TagString: Untagged
@@ -8360,8 +8361,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4097026958508745415
-MeshCollider:
+--- !u!65 &7957510714214575986
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8378,10 +8379,40 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2977981768884665668, guid: 02ad78cca7f19f843b49a2e580791919, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 14.703791, y: 0.4332295, z: 14.19593}
+  m_Center: {x: 0.019613748, y: 0, z: 0.003551484}
+--- !u!114 &3411160533707857550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457332449626933038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: a87065860bdcb934191fb4cd559810a9, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &7667695144607983582
 GameObject:
   m_ObjectHideFlags: 0
@@ -9820,7 +9851,7 @@ GameObject:
   - component: {fileID: 8552488461352383019}
   m_Layer: 0
   m_Name: door_002
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10469,9 +10500,10 @@ GameObject:
   - component: {fileID: 6085046296210650204}
   - component: {fileID: 664774549015813311}
   - component: {fileID: 7390764734058089988}
+  - component: {fileID: 4783561264998233294}
   m_Layer: 0
   m_Name: door_003
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10564,3 +10596,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -472266502467865846, guid: 02ad78cca7f19f843b49a2e580791919, type: 3}
+--- !u!114 &4783561264998233294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209315567423912916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ab281c49128d42b5e9245da99391f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPanel: {fileID: 0}

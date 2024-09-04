@@ -5,30 +5,33 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
-    [SerializeField] private float lookRotationSpeed;
-    [SerializeField] private float interactRange = 2f;
+    [SerializeField] private PlayerModel model;
+    [SerializeField] private PlayerInputs playerinputs;
 
-    [Header("UI")]
-    [SerializeField] private Image interactionTimeWheel;
+    private Interactable currentInteractable;
+    //[SerializeField] private Camera cam;
+    //[SerializeField] private float lookRotationSpeed;
+    //[SerializeField] private float interactRange = 2f;
 
-    [Header("Scripts Refrence")]
-    [SerializeField] Interactable interactable;
+    //[Header("UI")]
+    //[SerializeField] private Image interactionTimeWheel;
 
-    [Header("Animation")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private const string IDLE = "Idle";
-    [SerializeField] private const string WALK = "Walk";
+    //[Header("Scripts Refrence")]
+    //[SerializeField] Interactable interactable;
 
-    [Header("Movement")]
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private LayerMask clickAbleLayers;
-    [SerializeField] private ParticleSystem clickEffect;
-    [SerializeField] private float smoothFactor;
-    [SerializeField] private float moveBackDistance= 5f;
+    //[Header("Animation")]
+    //[SerializeField] private Animator animator;
+
+    //[Header("Movement")]
+    //[SerializeField] private NavMeshAgent agent;
+    //[SerializeField] private LayerMask clickAbleLayers;
+    //[SerializeField] private ParticleSystem clickEffect;
+    //[SerializeField] private float smoothFactor;
+    //[SerializeField] private float moveBackDistance= 5f;
+
+
 
     private PlayerInput input;
-    private float holdDuration = 2.0f;
 
     private void OnEnable()
     {
@@ -54,60 +57,68 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForInteractables()
     {
-        float remaningDuration;
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Stationary)
-            {
-                remaningDuration = holdDuration -= Time.deltaTime;
-                interactionTimeWheel.fillAmount = Mathf.Clamp01(remaningDuration / holdDuration);
-                Debug.Log(" duration " + holdDuration);
-            }
-            if (holdDuration <= 0 && touch.phase == TouchPhase.Ended)
-            {
+        if (playerinputs.isHoldingDownOver(ref model.holdDuration)) {
+            Debug.Log("touch ended");
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, model.interactRange);
 
-                Debug.Log("touch ended");
-                Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-                foreach (Collider collider in colliderArray)
+            Debug.Log("The range is " + model.interactRange);
+            if (model != null) { Debug.Log("Model is not null"); }
+            //Debug.Log("Number of objects in range: " + colliderArray.Length);
+            foreach (Collider collider in colliderArray)
+            {
+                Debug.Log("Found object: " + collider.gameObject.name);
+                if (collider.TryGetComponent(out Interactable interactable))
                 {
-                    if (collider.TryGetComponent(out Interactable interactable))
-                    {
-                        Debug.Log("Found a interactable object");
-                        interactable.DoorInteraction();
-                    }
-
+                    Debug.Log("Found an interactable object: " + collider.gameObject.name);
+                    interactable.DoorInteraction();
                 }
+                else
+                {
+                   // Debug.Log("No Interactable component found on: " + collider.gameObject.name);
+                }
+
             }
         }
-
-        else { holdDuration = 2f; }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Interactable interactable = collision.GetComponent<Interactable>();
-        if (interactable != null && collision.gameObject.CompareTag("Interactables"))
+        if (collision.gameObject.CompareTag("Interactables"))
         {
-            interactable.ShowInteractionPanel();
+            Interactable interactable = collision.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                // Store and show the interaction panel for the current interactable object
+                currentInteractable = interactable;
+                currentInteractable.ShowInteractionPanel();
+            }
         }
-        else if(interactable != null)
+        if ((model.clickAbleLayers.value & (1 << collision.gameObject.layer)) == 0)
         {
-            Debug.Log("colliding with " + collision.gameObject);
-            interactable.HideInteractionPanel();
-        }
-        if ((clickAbleLayers.value & (1 << collision.gameObject.layer)) == 0)
-        {
-            agent.isStopped = true;
+            model.agent.isStopped = true;
             //StartCoroutine(MoveBackAfterCollision());
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (currentInteractable != null && collision.gameObject.CompareTag("Interactables"))
+        {
+            Interactable interactable = collision.GetComponent<Interactable>();
+            if (interactable != null && interactable == currentInteractable)
+            {
+                // Hide the interaction panel and reset currentInteractable
+                currentInteractable.HideInteractionPanel();
+                currentInteractable = null;
+            }
         }
     }
     private void FaceTarget() 
     {
-        Vector3 direction = (agent.destination - transform.position).normalized;
+        Vector3 direction = (model.agent.destination - transform.position).normalized;
         if (direction != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * model.lookRotationSpeed);
         }
     }
     private void AssignInputs()
@@ -119,37 +130,22 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, 25, clickAbleLayers))
+        if (Physics.Raycast(model.cam.ScreenPointToRay(Input.mousePosition), out hit, 25, model.clickAbleLayers))
         {
-                agent.isStopped = false;
-                agent.destination = hit.point;
-                if (clickEffect != null)
+                model.agent.isStopped = false;
+                model.agent.destination = hit.point;
+                if (model.clickEffect != null)
                 {
-                    ParticleSystem _clickEffect = Instantiate(clickEffect, hit.point += new Vector3(0, 1f, 0), clickEffect.transform.rotation);
+                    ParticleSystem _clickEffect = Instantiate(model.clickEffect, hit.point += new Vector3(0, 1f, 0), model.clickEffect.transform.rotation);
                     StartCoroutine(DestroyClickEffect(_clickEffect.gameObject));
                 }
         }
         else
         {
-            agent.isStopped = true;
-            Debug.Log("ray collided with " + hit.collider.gameObject.name);
+            model.agent.isStopped = true;
+            // Debug.Log("ray collided with " + hit.collider.gameObject.name);
         }
 
-    }
-    private IEnumerator MoveBackAfterCollision()
-    {
-        Vector3 moveBackDirection = -transform.forward * moveBackDistance;
-        Vector3 targetPosition = transform.position + moveBackDirection;
-
-        float elapsedTime = 0f;
-        while (elapsedTime < smoothFactor)
-        {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, (elapsedTime / smoothFactor));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = targetPosition;
     }
     private IEnumerator DestroyClickEffect(GameObject _clickEffect) 
     {
@@ -159,13 +155,13 @@ public class PlayerController : MonoBehaviour
 
     private void SetAnimation()
     {
-        if(agent.velocity == Vector3.zero) 
+        if(model.agent.velocity == Vector3.zero) 
         {
-            animator.SetFloat("Speed", 0f);
+            model.animator.SetFloat("Speed", 0f);
         }
         else 
         {
-            animator.SetFloat("Speed", 1f);
+            model.animator.SetFloat("Speed", 1f);
         }
     }
 }

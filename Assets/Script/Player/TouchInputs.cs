@@ -2,23 +2,6 @@ using UnityEngine;
 
 public class TouchInputs : MonoBehaviour
 {
-    [SerializeField] private PlayerController controller;
-    private PlayerInput input;
-
-    private void OnEnable()
-    {
-        input.Enable();
-    }
-
-    private void OnDisable()
-    {
-        input.Disable();
-    }
-    private void Awake()
-    {
-        input = new PlayerInput();
-        AssignInputs();
-    }
 
     public bool isHoldingDownOver(ref float holdDuration, bool isPlyaerHoldingdown = false) 
     {
@@ -45,10 +28,5 @@ public class TouchInputs : MonoBehaviour
             holdDuration = 2f; 
             return false;
         }
-    }
-
-    private void AssignInputs()
-    {
-        input.Touch.TouchMovement.performed += ctx => controller.ClickToMove();
     }
 }

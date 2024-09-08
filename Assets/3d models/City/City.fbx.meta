@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 7ed9fb90c0fdd90468cb6efa9bdd341b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Athena_Tree_Willow_01_Ambient
+    second: {fileID: 2100000, guid: 658b847f81ecfc54ca44b924d3ac180c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CP_M_Apollo_Medium_Tree_Leaves_2
+    second: {fileID: 2100000, guid: facad2e3b76578849b15a4f6106660a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CP_M_Apollo_Medium_Tree_Trunk_2
+    second: {fileID: 2100000, guid: 6ac204d882ea8374293c3aa4cfdc0c61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Airplane_Broken_Nose_01
+    second: {fileID: 2100000, guid: 36efbd88873d5de468dd2d9ca2c17e97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Airplane_Broken_Tail_01
+    second: {fileID: 2100000, guid: 0fb2fe013098b1e48ab678661b00a9e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Apollo_Crates
+    second: {fileID: 2100000, guid: 153fe5a762057c94893d1555ab7baf4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BGBuilding_City_02
+    second: {fileID: 2100000, guid: 2246aa9731f5f6e4da066d83079f9ea3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BGBuilding_City_Skyline_01
+    second: {fileID: 2100000, guid: 7e04f24b501acbb49b20867747f4b889, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Bamboo_Tree_Ambient
+    second: {fileID: 2100000, guid: 6ba42f55adbab9942ae6cd29aa176f58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Bush_Solid_2_Ambient
+    second: {fileID: 2100000, guid: 06c04972a49fc354a819a6b1ea8c712b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Bush_Solid_2_Ambient_Leaves
+    second: {fileID: 2100000, guid: a9ef54e78d57c7c4cb06de5200d2aaea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_CarLift
+    second: {fileID: 2100000, guid: c95df7bdcdda36d4b9021e8a61f737d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Constr_Lift
+    second: {fileID: 2100000, guid: 82598547779974549a0c89254a987a89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DarkVillage_Chair_01
+    second: {fileID: 2100000, guid: c6c7bd276d8b56949923bb4ddaf4cc87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DrinkVendingMachine
+    second: {fileID: 2100000, guid: 51a95f708b597ef4bbcd9de57ccd7ef7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Foliage_Corn_01_Ambient
+    second: {fileID: 2100000, guid: 966e580f61413554188e44b4bc4b560c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Foliage_Flowers_02b_Ambient
+    second: {fileID: 2100000, guid: c47609631db523943a99f42fc85cd220, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_IND_LaserWeldingMachine
+    second: {fileID: 2100000, guid: 41c62167236120b4b8074b6afb8aacf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Industrial_CanningMachine_A
+    second: {fileID: 2100000, guid: f05be9f9ab8ef5049a67c7b5698904f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Mountain_MiningMachine_03
+    second: {fileID: 2100000, guid: 92d09372be282a24987d81960c7e4e91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Nightmare_JunglePlants_01
+    second: {fileID: 2100000, guid: e3a966f4a6e37db49a658c7d21fd9266, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_PatioSet01
+    second: {fileID: 2100000, guid: 5319da3e76c4609458721668eb3d7e7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Picket_Fence
+    second: {fileID: 2100000, guid: 3964d8ba55d11414b8765192d1388d89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_PowerPlant_Fence_01
+    second: {fileID: 2100000, guid: 5202f657e908ea3478a6b605fd2a89d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Roadsigns
+    second: {fileID: 2100000, guid: b8f00a37371a2704eb76d3e798706c13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Seven_Windmill_Detached_01
+    second: {fileID: 2100000, guid: bdd386f541fd99e4e903783615885c1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Shared_TrashCan_Large_01
+    second: {fileID: 2100000, guid: 233de610c8786e7498951cc50b7612d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Sign_Cow_Xing_Ambient
+    second: {fileID: 2100000, guid: b98f5569d6c70234e8fc7e5aee6731bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Sign_Slow_Ambient
+    second: {fileID: 2100000, guid: 2a9fe694ba840e2488dc079c7c69d240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Soft_Serve_Machine
+    second: {fileID: 2100000, guid: 8d15c85a931941b48a166b7ab8ba5613, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_StreetConstruction
+    second: {fileID: 2100000, guid: 449a66a97c0cb8d47ac10031c40e4ee9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Street_MailBox_03
+    second: {fileID: 2100000, guid: 4f74a7c427919b74e92c7e7f3e95cbef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Street_PayPhone_01_22555d12
+    second: {fileID: 2100000, guid: bdc02185d2b3bb64684475e16d66a8c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Street_Sign_01
+    second: {fileID: 2100000, guid: 8857db310d8a0f842b3a3e52bda4c839, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Street_UrbanLights
+    second: {fileID: 2100000, guid: c07546417254afd4f8d8ddeb1a637a6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_TRV_MetalStack
+    second: {fileID: 2100000, guid: 9a06c9f41d803c74385f2f5767bc17cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_WildWest_Windmill_01
+    second: {fileID: 2100000, guid: 859068da64932f142a5ae346b0ecf300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_WildWest_WoodPile
+    second: {fileID: 2100000, guid: 979ec7b543bd32348a709e34d32b20f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_ChopShop_EngineLift_01
+    second: {fileID: 2100000, guid: a9cd0b05892f8bf41959a2b2c1656900, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Medium_TreeLog_01
+    second: {fileID: 2100000, guid: e2084498b9426a343abc2fb5cfab7fe1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Mini_Forklift
+    second: {fileID: 2100000, guid: bc2629c6956b90e4dbe5cdcc51ee6f0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Neo_ParkTree_02
+    second: {fileID: 2100000, guid: f176527c4b50a004189ea48af7ac6a45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TRV_CAS_WoodenBarrels_01
+    second: {fileID: 2100000, guid: 37eccf6a7f80ae743b633d6db9d3549f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_WoodMines_Wood02
+    second: {fileID: 2100000, guid: 21b181d965cfa3a4f9b561ecd1608932, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 950040da62677f242bdeaf0474f9ef81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: e9b05ad10b18cae4ba6ead983b9c4c03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 85d1be37d81ac9242917c905cc4380d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: 1b8751eb45f87914d911681b9b612b7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: f84c7a19ba49c064896008c5f435d427, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 124046cf219c9974fa1679bab893375a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.013
+    second: {fileID: 2100000, guid: 9747998827080c7478ad8f695f66cdac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_lvl3_Static_INST
+    second: {fileID: 2100000, guid: 3e9dabfbe2b391648a849e4e524ccd09, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,28 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.AI;
 
 public class PlayerModel
 {
-    public Camera cam;
-    public float lookRotationSpeed; 
-
-    public float interactRange   = 3f;
-    public Image interactionTimeWheel;
-
-    public Animator animator;
-
-    public NavMeshAgent agent;
-    public LayerMask clickAbleLayers;
-    public ParticleSystem clickEffect;
-
+    public float lookRotationSpeed = 5f; 
+    public float interactRange  = 5f;
     public float holdDuration = 2f;
-
-    private PlayerController playerController;
-
-    public void SetPlayerController(PlayerController playerController) 
-    {
-        this.playerController = playerController;
-    }
+    public Vector3 agentVelocity;
+    public Vector3 agentDestination;
 
 }

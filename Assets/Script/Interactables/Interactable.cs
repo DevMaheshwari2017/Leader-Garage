@@ -1,10 +1,12 @@
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
     [SerializeField] private GameObject interactionPanel;
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject houseGameObject;
+    [SerializeField] private NavMeshSurface cityNavMeshSurface;
 
     private bool canPlayerInteract;
 
@@ -24,36 +26,34 @@ public class Interactable : MonoBehaviour
         canPlayerInteract = false;
     }
 
-    public void DoorInteraction()
+    public void GarageDoorInteraction()
     {
         if (!canPlayerInteract) return;
             
             // Perform your logic on the interactable object
             if (doorOpenClose == 1)
             {
-            Debug.Log("Opening door");
-                OpeneDoor();
+                OpenGarageDoor();
                 //houseGameObject.SetActive(true);
             }
             else if (doorOpenClose == 0) 
             {
-                CloseDoor();
+                CloseGarageDoor();
             }
     }
 
-    private void OpeneDoor()
+    private void OpenGarageDoor()
     {
             animator.SetInteger("DoorOpenClose", doorOpenClose);
             doorOpenClose = 0;
-            Debug.Log("Door opened");
+            cityNavMeshSurface.enabled = true;
     }
 
-    private void CloseDoor() 
+    private void CloseGarageDoor() 
     {
 
         animator.SetInteger("DoorOpenClose", doorOpenClose);
         doorOpenClose = 1;
-        Debug.Log("Door closed");
-        houseGameObject.SetActive(false);
+        cityNavMeshSurface.enabled = false;
     }
 }

@@ -18,6 +18,30 @@ public class PlayerView : MonoBehaviour
     private PlayerController playerController;
     private PlayerInput input;
 
+    //setter
+    public void SetPlayerController(PlayerController playerController) 
+    {
+        this.playerController = playerController;
+    }
+    public void SetAnimationSpeed(float speed)
+    {
+        animator.SetFloat("Speed", speed);
+    }
+
+    //getter
+    public LayerMask GetClickableLayers()
+    {
+        return clickAbleLayers;
+    }
+    public Vector3 GetAgentDestination()
+    {
+        return agent.destination;
+    }
+
+    public Vector3 GetAgentVelocity()
+    {
+        return agent.velocity;
+    }
     private void OnEnable()
     {
         input.Enable();
@@ -28,10 +52,6 @@ public class PlayerView : MonoBehaviour
         input.Disable();
     }
 
-    public void SetPlayerController(PlayerController playerController) 
-    {
-        this.playerController = playerController;
-    }
 
     private void Awake()
     {
@@ -66,13 +86,14 @@ public class PlayerView : MonoBehaviour
         return Physics.Raycast(cam.ScreenPointToRay(UnityEngine.Input.mousePosition), out hit, 25f, clickAbleLayers);
     }
 
-    public void StopPlayerMovement(Collider collision) 
+    public void StopPlayerMovement() 
     {
-        if ((clickAbleLayers.value & (1 << collision.gameObject.layer)) == 0)
-        {
+        //if ((clickAbleLayers.value & (1 << collision.gameObject.layer)) == 0)
+        //{
             agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             //StartCoroutine(MoveBackAfterCollision());
-        }
+        //}
     }
 
     // Moves the NavMeshAgent to the destination
@@ -98,21 +119,6 @@ public class PlayerView : MonoBehaviour
         Destroy(_clickEffect);
     }
 
-    public Vector3 GetAgentDestination()
-    {
-        return agent.destination;
-    }
-
-    public Vector3 GetAgentVelocity()
-    {
-        return agent.velocity;
-    }
-
-    public void SetAnimationSpeed(float speed)
-    {
-        animator.SetFloat("Speed", speed);
-    }
-
     // Helper method to check for holding input and increment hold duration
     public bool IsHoldingInput(ref float holdDuration)
     {
@@ -123,4 +129,16 @@ public class PlayerView : MonoBehaviour
     {
         input.Touch.TouchMovement.performed += ctx => playerController.ClickToMove();
     }
+
+    public bool PlayerTapped() 
+    {
+      return touchInputs.Tap();
+    }
+
+    public RaycastHit[] RaycastAllFromScreen()
+    {
+        Ray ray = cam.ScreenPointToRay(UnityEngine.Input.mousePosition);
+        return Physics.RaycastAll(ray, 25f);
+    }
+
 }

@@ -16578,7 +16578,7 @@ GameObject:
   - component: {fileID: 4674891421144591382}
   m_Layer: 3
   m_Name: GarageSurface
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25899,6 +25899,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_GarageFrontDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358734114714803074, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358734114714803074, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_TagString
+      value: GarageDoorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226464443324121337, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226464443324121337, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_TagString
+      value: GarageDoorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276036095683295417, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276036095683295417, guid: 88f5cec1da25ee04fa781c03c7ce3be1,
+        type: 3}
+      propertyPath: m_TagString
+      value: GarageDoorButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

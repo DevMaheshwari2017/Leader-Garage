@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cube
-  - Ground
+  - GarageDoorButton
   - Interactables
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -14,8 +14,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - NPCWalkableArea
+  - Interactables
   - 
   - 
   - 

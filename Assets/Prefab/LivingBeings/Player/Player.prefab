@@ -2593,7 +2593,7 @@ GameObject:
   - component: {fileID: 3370627727510779535}
   - component: {fileID: 7178396941524610098}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: WorldSpaceCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3225,7 +3225,7 @@ GameObject:
   - component: {fileID: 4088389049688267069}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

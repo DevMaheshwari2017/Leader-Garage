@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class NPC_Controller : MonoBehaviour
 {
@@ -21,8 +22,10 @@ public class NPC_Controller : MonoBehaviour
 
     public NPCType type;
 
+    [TextArea(5,20)]
     [SerializeField] private string[] randomMessages;
-    [SerializeField] private string[] storyMessages;
+    [TextArea(5,20)]
+    [SerializeField] private string[] CollisionMessages;
     [SerializeField] private TextMeshProUGUI messageToDisplay;
     [SerializeField] private Animator animator;
 
@@ -32,6 +35,9 @@ public class NPC_Controller : MonoBehaviour
 
     private int index = 0;
     private int minDistance = 5;
+    private PlayerView view;
+    private bool hasNPCCollide;
+    private bool isWaiting;
 
     private void Start()
     {
@@ -46,14 +52,65 @@ public class NPC_Controller : MonoBehaviour
     }
     private void Update()
     {
-        SetNPCAnimation();
+        SetNPCAnimation(type);
+        if (type == NPCType.RomingNPC && !hasNPCCollide)
+        {
+            SetNPCAnimation(type, "Walk");
+        }
+    }
 
-            if (type == NPCType.RomingNPC )
+    private void FixedUpdate()
+    {
+            if (type == NPCType.RomingNPC && !hasNPCCollide)
             {
                 MoveNPC();
             }
+       
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        view = collision.GetComponent<PlayerView>();
+        if (view != null && type == NPCType.RomingNPC)
+        {
+            Debug.Log("entered Collison with player");
+            hasNPCCollide = true;
+            SetNPCAnimation(type, "Idle");
+            ShowCollisionMessages(0);
+        }
+    }
+    private void OnTriggerStay(Collider collision)
+    {
+        view = collision.GetComponent<PlayerView>();
+        hasNPCCollide = true;
+        if (view != null && type == NPCType.RomingNPC && !isWaiting)  
+        {
+           StartCoroutine( WaitToShowMessageAgain(type));         
+        }
+    }
+    private void OnTriggerExit(Collider collision)
+    {
+        view = collision.GetComponent<PlayerView>();
+        if (view != null && type == NPCType.RomingNPC) 
+        {
+            Debug.Log("exited Collison with player");
+            hasNPCCollide = false;
+            SetNPCAnimation(type, "Walk");
+            ShowCollisionMessages(2);
+        }
+    }
+
+    private IEnumerator WaitToShowMessageAgain(NPCType type) 
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(5.0f);
+        Debug.Log("Trying to call stay collision message");
+        if (type == NPCType.RomingNPC && hasNPCCollide == true) 
+        {
+            ShowCollisionMessages(1);
+        }
+        isWaiting = false;
+    } 
     private void MoveNPC() 
     {
         if (Vector3.Distance(transform.position, waypoints[index].position) < minDistance)
@@ -67,7 +124,8 @@ public class NPC_Controller : MonoBehaviour
                 index = 0;
             }
         }
-            transform.position = Vector3.Lerp(transform.position, waypoints[index].position, Time.deltaTime);
+
+        transform.position = Vector3.Lerp(transform.position, waypoints[index].position, Time.fixedDeltaTime);
         transform.localRotation = waypoints[index].localRotation;
         
     }
@@ -93,7 +151,7 @@ public class NPC_Controller : MonoBehaviour
 
             case NPCType.StaticTalkingNPC: 
                 GenrateRandomMessage();
-                break;
+            break;
 
             default: Debug.Log("Staic NPC : Can't interact");
             break;
@@ -104,16 +162,41 @@ public class NPC_Controller : MonoBehaviour
     {
         int randomNumber = Random.Range(0, randomMessages.Length);
         messageToDisplay.text = randomMessages[randomNumber];
+        StartCoroutine(ClearMessage());
     }
-    private void SetNPCAnimation() 
+
+    private void ShowCollisionMessages(int index) 
     {
-        if (type == NPCType.RomingNPC) 
+        messageToDisplay.text = CollisionMessages[index];
+        Debug.Log("Showing collison message : " + CollisionMessages[index]);  
+        StartCoroutine(ClearMessage());
+    }
+
+    private IEnumerator ClearMessage() 
+    {
+        yield return new WaitForSeconds(2.0f);
+        messageToDisplay.text = string.Empty;
+    }
+    private void SetNPCAnimation(NPCType type,string animationState = "Idle") 
+    {
+        //float damTime = 0.2f;
+        switch (type) 
         {
-            animator.SetFloat("Speed_NPC", 1);
-        }
-        else if(type == NPCType.StaticTalkingNPC)
-        {
-            animator.SetBool("IsNPCStatic", true);
+            case NPCType.RomingNPC:
+                if (animationState == "Walk")
+                {
+
+                    animator.SetFloat("Speed_NPC", 1);
+                }
+                else if (animationState == "Idle")
+                {
+                    animator.SetFloat("Speed_NPC", 0);
+                }
+            break;
+            case NPCType.StaticTalkingNPC: 
+                animator.SetBool("IsNPCStatic", true);
+            break;
+
         }
     }
 }

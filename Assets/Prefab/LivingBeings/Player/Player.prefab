@@ -3222,7 +3222,6 @@ GameObject:
   - component: {fileID: 6581930646171641858}
   - component: {fileID: 1467993156176090315}
   - component: {fileID: 584801382672026043}
-  - component: {fileID: 4088389049688267069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3290,13 +3289,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionTimeWheel: {fileID: 664885472367278890}
   animator: {fileID: 2634044196046532179}
-  agent: {fileID: 4088389049688267069}
+  agent: {fileID: 0}
   clickEffect: {fileID: 2406753687989949797, guid: 6db0fc7c2b4ac5340a55ad8dd9284789,
     type: 3}
   cam: {fileID: 5016187926633993118}
   clickAbleLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
 --- !u!114 &3908823422462030931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3380,28 +3379,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3221426, y: 4.110535, z: 2.2336922}
   m_Center: {x: 0.011130333, y: 2.01239, z: 0.020536423}
---- !u!195 &4088389049688267069
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669123212342418738}
-  m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 100
-  avoidancePriority: 50
-  m_AngularSpeed: 0
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &7729775715004661690
 GameObject:
   m_ObjectHideFlags: 0
